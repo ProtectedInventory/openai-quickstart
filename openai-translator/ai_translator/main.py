@@ -21,7 +21,14 @@ if __name__ == "__main__":
 
     pdf_file_path = args.book if args.book else config['common']['book']
     file_format = args.file_format if args.file_format else config['common']['file_format']
+    target_language = args.target_language if args.target_language else config['common']['target_language']
+    output_file_path = args.output_file_path if args.output_file_path else config['common']['output_file_path']
 
     # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
     translator = PDFTranslator(model)
-    translator.translate_pdf(pdf_file_path, file_format)
+    translator.translate_pdf(
+        pdf_file_path = pdf_file_path, 
+        file_format = file_format, 
+        target_language = target_language, 
+        output_file_path = output_file_path
+        )

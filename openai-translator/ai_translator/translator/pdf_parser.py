@@ -28,6 +28,7 @@ class PDFParser:
                 raw_text = pdf_page.extract_text()
                 tables = pdf_page.extract_tables()
 
+                # 去除掉raw_text中的表格内容，确保raw_text没有表格内容
                 # Remove each cell's content from the original text
                 for table_data in tables:
                     for row in table_data:
@@ -47,6 +48,7 @@ class PDFParser:
 
 
 
+                # TableContent似乎没有对tables的内容做额外的处理
                 # Handling tables
                 if tables:
                     table = TableContent(tables)

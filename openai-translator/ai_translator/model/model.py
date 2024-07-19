@@ -2,11 +2,19 @@ from book import ContentType
 
 class Model:
     def make_text_prompt(self, text: str, target_language: str) -> str:
-        return f"翻译为{target_language}：{text}"
+        return f'''
+        以下内容翻译为{target_language}, 
+        注意：1. 必须全部翻译成{target_language}，2. 不可以出现{target_language}之外的语言内容：
+        {text}
+        '''
 
     def make_table_prompt(self, table: str, target_language: str) -> str:
         # return f"翻译为{target_language}，保持间距（空格，分隔符），以表格形式返回：\n{table}"
-        return f"翻译为{target_language}，以空格和换行符表示表格：\n{table}"
+        return f'''
+        以下内容翻译为{target_language}, 
+        注意：1. 必须全部翻译成{target_language}，2. 以空格和换行符表示表格\n, 3. 不可以出现{target_language}之外的语言内容：
+        {table}
+        '''
 
     def translate_prompt(self, content, target_language: str) -> str:
         if content.content_type == ContentType.TEXT:

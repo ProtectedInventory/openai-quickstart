@@ -9,3 +9,5 @@ GLMModel:
 common:
   book: "tests/test.pdf"
   file_format: "markdown"
+  target_language: "Korean"
+  output_file_path: "tests/test_korean.md"
